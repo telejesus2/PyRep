@@ -182,6 +182,19 @@ def simSetJointForce(jointHandle, force):
     lib.simSetJointForce(jointHandle, force)
 
 
+def simGetJointMaxForce(jointHandle):
+    force = ffi.new('float *')
+    ret = lib.simGetJointMaxForce(jointHandle, force)
+    _check_return(ret)
+    if ret == 0:
+        raise RuntimeError('No value available yet.')
+    return force[0]
+
+
+def simSetJointMaxForce(jointHandle, force):
+    lib.simSetJointMaxForce(jointHandle, force)
+
+
 def simGetJointInterval(jointHandle):
     cyclic = ffi.new('char *')
     interval = ffi.new('float [2]')
@@ -450,6 +463,11 @@ def simGetFloatParameter(parameter):
 
 def simSetFloatParameter(parameter, value):
     ret = lib.simSetFloatParameter(parameter, value)
+    _check_return(ret)
+
+
+def simSetStringParameter(parameter, value):
+    ret = lib.simSetStringParameter(parameter, value.encode('ascii'))
     _check_return(ret)
 
 
