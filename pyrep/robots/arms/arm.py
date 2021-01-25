@@ -238,7 +238,7 @@ class Arm(RobotComponent):
                            quaternion: Union[List[float], np.ndarray] = None,
                            ignore_collisions=False,
                            trials=100, max_configs=60, trials_per_goal=6,
-                           algorithm=Algos.SBL, relative_to: Object = None
+                           algorithm=Algos.RRTConnect, relative_to: Object = None
                            ) -> ArmConfigurationPath:
         """Gets a non-linear (planned) configuration path given a target pose.
 
@@ -296,7 +296,7 @@ class Arm(RobotComponent):
                  quaternion: Union[List[float], np.ndarray] = None,
                  ignore_collisions=False,
                  trials=100, max_configs=60, trials_per_goal=6,
-                 algorithm=Algos.SBL, relative_to: Object = None
+                 algorithm=Algos.RRTConnect, relative_to: Object = None
                  ) -> ArmConfigurationPath:
         """Tries to get a linear path, failing that tries a non-linear path.
 
